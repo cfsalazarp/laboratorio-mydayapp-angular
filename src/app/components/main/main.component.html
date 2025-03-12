@@ -1,1 +1,28 @@
-<p>main works!</p>
+<!-- This section should be hidden by default and shown when there are todos -->
+<section *ngIf="this.todoStore.tasks().length !== 0" class="main">
+  <ul class="todo-list">
+    <li
+      *ngFor="let task of this.todoStore.tasks()"
+      [class.completed]="task.completed"
+      [class.editing]="task.id === editingTaskId"
+    >
+      <div class="view">
+        <input
+          class="toggle"
+          type="checkbox"
+          [checked]="task.completed"
+          (change)="toggleTask(task)"
+        />
+        <label (click)="editTask(task)">{{ task.title }}</label>
+        <button class="destroy" (click)="removeTask(task)"></button>
+      </div>
+      <input
+        #updateTaskInput
+        class="edit"
+        [value]="task.title"
+        (keydown.enter)="updateTask(task, updateTaskInput.value)"
+        (blur)="updateTask(task, updateTaskInput.value)"
+      />
+    </li>
+  </ul>
+</section>
