@@ -1,8 +1,8 @@
 <!-- This section should be hidden by default and shown when there are todos -->
-<section *ngIf="this.todoStore.tasks().length !== 0" class="main">
+<section *ngIf="this.tasks.length !== 0" class="main">
   <ul class="todo-list">
     <li
-      *ngFor="let task of this.todoStore.tasks()"
+      *ngFor="let task of this.tasks"
       [class.completed]="task.completed"
       [class.editing]="task.id === editingTaskId"
     >

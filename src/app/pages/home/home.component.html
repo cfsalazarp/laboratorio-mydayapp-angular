@@ -1,7 +1,7 @@
 <section class="todoapp">
   <app-header></app-header>
   <div class="container todoapp-wrapper">
-    <app-main></app-main>
+    <app-main [filter]="this.filterSelected"></app-main>
     <app-footer></app-footer>
   </div>
 </section>
